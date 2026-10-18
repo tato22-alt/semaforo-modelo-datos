@@ -71,7 +71,7 @@ alcanzó.
 
 ## Fuera de alcance
 
-- Emitir sin conexión. Decidido por Luciano: queda afuera. Si no hay internet, la página avisa y
+- Emitir sin conexión. Decidido por el dueño: queda afuera. Si no hay internet, la página avisa y
   no guarda, igual que hoy.
 - Sincronizar borradores entre equipos. El borrador es de ese equipo; si querés que esté en todas
   partes, eso es "Dejar pendiente", que ya existe.

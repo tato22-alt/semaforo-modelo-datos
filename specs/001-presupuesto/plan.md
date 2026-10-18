@@ -22,7 +22,7 @@ registrar un trabajo que llegue sin presupuesto previo — un auto de compañía
 emitida, por ejemplo — y el principio IV prohíbe que el esquema impida registrar la realidad. La clave
 subrogada cuesta una columna y no cierra ninguna puerta.
 
-Confirmado por Luciano: el número sigue siendo por el que se identifica un arreglo, pero no es la
+Confirmado por el dueño: el número sigue siendo por el que se identifica un arreglo, pero no es la
 clave primaria.
 
 ### D2 — El total no se almacena
@@ -81,7 +81,7 @@ limpiarlo. Fusionar clientes es una operación posterior y manual, y hay que pre
 
 Un presupuesto sin nombre de cliente entra con `id_cliente` nulo. Sin patente, con `id_vehiculo` nulo.
 
-Confirmado por Luciano: la importación **no** intenta unificar por teléfono. Unificar por teléfono
+Confirmado por el dueño: la importación **no** intenta unificar por teléfono. Unificar por teléfono
 fusionaría a dos personas que comparten una línea —hermanos, matrimonio, el teléfono del taller
 anotado por comodidad— y una fusión equivocada no se desarma. Duplicar y unir a mano de a uno es
 reversible; fusionar de más, no. La consulta de T015 lista los parecidos para esa revisión.
@@ -123,7 +123,7 @@ en que alguien se acuerda suele ser tarde.
 `authenticated` no tiene privilegio de `DELETE` sobre `trabajos`. Un presupuesto registrado es un
 registro histórico: si está mal se corrige (RF-016), y si no se concretó se marca (RF-015).
 
-Confirmado por Luciano: "no debería por qué borrar los presupuestos, son un registro histórico".
+Confirmado por el dueño: "no debería por qué borrar los presupuestos, son un registro histórico".
 
 Con esto RF-020 —un número emitido no se reutiliza nunca— deja de necesitar una estructura propia. El
 índice único impide dos filas con el mismo número, y como ninguna fila desaparece, ningún número
@@ -351,9 +351,9 @@ feature. Quedan como están hasta que su feature las rediseñe o las elimine.
 
 | Dato | Valor |
 |---|---|
-| URL | `https://osslhkvdclrbukjqwpnt.supabase.co` |
-| Identificador | `osslhkvdclrbukjqwpnt` |
-| Clave publishable | `sb_publishable_MV1IZ770uuRM2bUmZqmuWA_mdicKzXw` |
+| URL | `https://<id-del-proyecto>.supabase.co` |
+| Identificador | el del panel de Supabase, no va en el repo |
+| Clave publishable | la del panel de Supabase (es pública por diseño, pero no hace falta tenerla acá) |
 | Registro público | desactivado |
 | Usuarios | dados de alta a mano |
 

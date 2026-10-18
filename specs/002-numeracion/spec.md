@@ -1,7 +1,7 @@
 # Spec 002 — Numeración
 
 **Estado:** borrador · **Constitución:** v3.0.0 · **Motor:** PostgreSQL sobre Supabase
-**Pedido de Luciano:** *"Quiero que arranque en 16000."*
+**Pedido del dueño:** *"Quiero que arranque en 16000."*
 
 ---
 
@@ -22,7 +22,7 @@ cosa y no dependen de esto.
 ## Requisitos
 
 - **RF-101** — La base entrega el próximo número de presupuesto. El primero de la serie es el
-  **16000**. *(Confirmado por Luciano: el talonario físico terminó en el 15999, así que la serie
+  **16000**. *(Confirmado por el dueño: el talonario físico terminó en el 15999, así que la serie
   digital arranca en el 16000 y continúa la numeración del papel sin hueco ni superposición. No hace
   falta adelantar el contador.)*
 - **RF-102** — Dos personas pidiendo un número al mismo tiempo reciben números distintos. Nunca el

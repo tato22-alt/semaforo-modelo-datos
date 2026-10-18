@@ -1,94 +1,50 @@
-# Gestión de Taller — El Semáforo
+# El Semáforo — modelo de datos
 
-Modelo de datos del sistema de gestión del Taller El Semáforo, un taller de chapa y pintura.
+Base de datos de un sistema de gestión para un taller de chapa y pintura: presupuestos,
+clientes, vehículos y trabajos. **PostgreSQL sobre Supabase**, en uso real.
 
-**Motor: PostgreSQL sobre Supabase.** Acá vive la base de datos: el esquema, las restricciones de
-integridad, las vistas que derivan las magnitudes del negocio, las políticas de acceso, y el
-diccionario que las explica. La aplicación se construye por separado y consume esta base.
+## En números
 
-## Estado
+| | |
+|---|---|
+| Migraciones | 19, aplicadas en producción |
+| Esquema | 4 tablas, 2 vistas, 6 funciones, 0 triggers |
+| Verificación | 58 comprobaciones automáticas en una sola consulta, 58/58 en verde |
+| Acceso | RLS activa y forzada; sin sesión no se lee ni se escribe nada |
 
-En desarrollo y ya en uso real. Diecinueve migraciones corridas: cuatro tablas, dos vistas, seis
-funciones, cero triggers, RLS puesto, y **58 verificaciones automáticas** que corren en una sola
-consulta. La base reparte los números de presupuesto desde el 16000 y no puede repetir ninguno.
+## Tres decisiones que definen el diseño
+
+- **Lo derivado no se guarda.** No hay columnas de total: los totales salen de una vista al
+  leer. Un dato guardado dos veces termina diciendo dos cosas distintas.
+- **La base es la API.** Supabase expone el esquema por REST; no hay servidor en el medio.
+- **La numeración la reparte la base.** Una secuencia garantiza que dos personas cargando a la
+  vez nunca saquen el mismo número de presupuesto.
+
+## Cómo se trabajó
+
+Spec-Driven Development: **spec → plan → tareas → migración**, y nada se migra sin una spec
+aprobada. Cada feature tiene su carpeta en [`specs/`](./specs/), y los principios que mandan
+sobre todo están en la [constitución](./.specify/memory/constitution.md).
 
 | Feature | Estado |
 |---|---|
-| 001 Presupuesto | Cerrado. 58/58 en el QA de SQL, 8/8 en la verificación de acceso con login real |
-| 002 Numeración | Implementado. La base reparte los números, arrancando en 16000 |
-| 003 Verificación del impreso | En pausa: el código de verificación no se imprime |
+| 001 Presupuesto | Cerrado y verificado con login real |
+| 002 Numeración | Implementado |
+| 003 Verificación del impreso | En pausa |
 | 004 Chasis y observaciones | Implementado |
 | 005 Detalle de mano de obra | Implementado |
-| 006 Presupuestos pendientes | Implementado. Un trabajo todavía sin número |
-| 007 El borrador no se pierde | Especificado, sin aprobar. No toca la base |
+| 006 Presupuestos pendientes | Implementado |
+| 007 Borrador que no se pierde | Especificado |
 
-El estado al día está en `ESTADO.md`, que es el punto de entrada cuando se vuelve al proyecto.
+## Dónde mirar
 
-## Cómo está organizado
-
-```text
-.specify/memory/constitution.md    Los principios que mandan sobre todo lo demás
-specs/                             Una carpeta por feature: spec, plan, tareas y verificación
-supabase/migrations/               EL MODELO VIGENTE — diecinueve migraciones
-ESTADO.md                          Dónde está todo. El punto de entrada
-docs/diccionario-datos.md          Qué guarda la base y qué deriva al leer
-docs/legado-modelo-academico.md    Qué se derogó del modelo académico, y por qué
-```
-
-## Cómo se trabaja acá
-
-El orden es **spec → plan → tareas → implementación**, y las dos primeras las confirma el dueño del
-negocio antes de que se toque el esquema. Ninguna migración se escribe sin una spec aprobada. Cuando
-la implementación descubre que la spec estaba equivocada, se corrige la spec — no se deja el DDL como
-única verdad.
-
-Las migraciones se ejecutan pegándolas en el editor SQL del panel de Supabase. El criterio para dar
-una tarea por terminada es que **corra**, no que esté escrita.
-
-## Verificación
-
-`specs/001-presupuesto/qa-001-verificacion.sql` es una sola consulta que devuelve 58 filas, una por
-verificación, con PASA o FALLA. Cubre estructura, integridad, derivación y acceso. Se limpia sola.
-
-Es la fuente de verdad sobre el estado de la base: responde si el esquema es el que debería ser, que
-es más útil que acordarse de qué migración se corrió.
-
-## Principios que explican las decisiones raras
-
-Están completos en la constitución. Los tres que más se notan al leer el esquema:
-
-- **Lo que se puede derivar, no se almacena.** No hay ninguna columna de total: los totales salen de
-  una vista, calculados al leer. Un dato derivado que se almacena es uno que alguien va a olvidar de
-  actualizar.
-- **El esquema no impide registrar la realidad.** Casi todo es nulo. Un sistema que impide registrar
-  lo que pasó se saltea, y desde ese día refleja una realidad que no existe.
-- **Ningún automatismo escribe estados financieros.** Cero triggers. El modelo anterior tenía un
-  procedimiento que marcaba un trabajo como cobrado ante cualquier seña, sin comparar montos.
-
-## El modelo, en una línea cada uno
-
-| Tabla | Qué es |
+| | |
 |---|---|
-| `clientes` | El dueño o responsable. Lo único exigido es el nombre |
-| `vehiculos` | Identificado por patente, única y normalizada por el motor |
-| `trabajos` | El expediente: nace del presupuesto y lleva su número. No se borra |
-| `trabajo_items` | Los conceptos presupuestados, en el orden en que se cargaron |
-| `vw_presupuestos` | Una fila por trabajo, con los totales calculados al leer |
-| `vw_presupuestos_incompletos` | A qué presupuestos les falta algo, y qué |
+| [`supabase/migrations/`](./supabase/migrations/) | El esquema |
+| [`specs/001-presupuesto/qa-001-verificacion.sql`](./specs/001-presupuesto/qa-001-verificacion.sql) | El QA: pegarlo en el editor SQL devuelve una fila por comprobación |
+| [`docs/diccionario-datos.md`](./docs/diccionario-datos.md) | Qué guarda cada tabla y qué se deriva |
 
-Deuda, cobranza, facturación, documentos, seguro, siniestro y estado operativo **no existen
-todavía**: son features posteriores, y cada uno necesita su propia spec aprobada antes de tocar el
-esquema.
+## Estado del repositorio
 
-## Qué preguntas responde hoy
-
-1. Qué presupuesto tiene un número dado.
-2. Qué presupuestos existen para una patente, del más nuevo al más viejo.
-3. Qué presupuestos tiene un cliente, buscándolo por parte del nombre — sin tildes también.
-4. Cuál fue el último presupuesto cargado.
-5. Cuánto suma un presupuesto y qué conceptos lo componen.
-6. Qué presupuestos quedaron sin concretarse.
-7. Cuántos presupuestos se hicieron en un mes y por qué monto.
-
-Cada una se responde con una sola consulta. Están en
-`specs/001-presupuesto/consultas-siete-preguntas.sql`.
+Congelado el 2026-10-07. El modelo siguió creciendo en un repositorio privado. Acá no hay
+datos del taller: ni clientes, ni montos, ni credenciales.

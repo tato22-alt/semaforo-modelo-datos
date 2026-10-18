@@ -2,7 +2,7 @@
 --
 -- Spec: RF-024 (nuevo), RF-008, RF-019 · Plan: "Vistas" · Hallazgos: H7
 --
--- Regla de carga confirmada por Luciano: un presupuesto cargado hoy tiene que tener fecha,
+-- Regla de carga confirmada por el dueño: un presupuesto cargado hoy tiene que tener fecha,
 -- cliente con nombre, dirección y teléfono, y mano de obra mayor a cero. Los repuestos NO:
 -- hay trabajos que son sólo mano de obra. El vehículo tampoco entra en la exigencia.
 --

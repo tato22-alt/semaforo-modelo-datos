@@ -1,9 +1,11 @@
 # Estado del proyecto — dónde está todo
 
+> **Histórico: así quedó el 2026-10-07.** El modelo siguió en un repositorio privado; lo de abajo
+> no se actualiza más.
+
 Punto de entrada cuando volvés. Si algo de acá y el esquema se contradicen, gana el esquema: corré
 el QA, que es la fuente de verdad.
 
-**Rama:** `claude/semaforo-taller-system-eroppo` · **Proyecto Supabase:** `osslhkvdclrbukjqwpnt`
 
 ---
 

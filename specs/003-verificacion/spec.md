@@ -1,11 +1,11 @@
 # Spec 003 — Verificación del presupuesto impreso
 
-**Estado:** EN PAUSA — Luciano decidió que la marca de agua alcanza, así que el código no se
+**Estado:** EN PAUSA — el dueño decidió que la marca de agua alcanza, así que el código no se
 imprime. Sin eso, el código no tiene para qué existir: la migración está escrita y verificada pero
 **fuera de `supabase/migrations/`** (ver `migracion-no-aplicada.sql`), para que nadie aplique a la
 base una columna que nada usa. Retomar esto es mover ese archivo de vuelta y correr el QA.
 **Constitución:** v3.0.0
-**Pedido de Luciano:** *"necesito agregar una marca de agua que impida la falsificación del documento,
+**Pedido del dueño:** *"necesito agregar una marca de agua que impida la falsificación del documento,
 tal vez sobre el total"*
 
 ---

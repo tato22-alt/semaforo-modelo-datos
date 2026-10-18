@@ -5,7 +5,7 @@
 Los siete criterios de la spec, con cómo se probó cada uno. Donde dice "QA n", es el número de
 verificación de `fn_qa_001_presupuesto()`, que corre sobre la base real y se puede repetir.
 
-**Última corrida completa:** 49 PASA · 0 FALLA, sobre Supabase (`osslhkvdclrbukjqwpnt`) y sobre
+**Última corrida completa:** 49 PASA · 0 FALLA, sobre Supabase y sobre
 PostgreSQL 16 local en tres escenarios (base vacía desde cero, base poblada, y doble pasada de las
 migraciones).
 

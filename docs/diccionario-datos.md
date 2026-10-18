@@ -62,7 +62,7 @@ desincronizar: si cambia el origen, cambian solas.
 | `vehiculos.patente_norm` | `upper(regexp_replace(patente, '[\s.\-]', '', 'g'))` — mayúsculas, sin espacios, guiones ni puntos | Que `aa 123-bb` y `AA123BB` sean el mismo vehículo. **Es única.** |
 
 **Sobre los acentos.** `nombre_norm` ignora tildes *y la eñe*: `PEÑA` y `PENA` quedan iguales.
-Decisión consciente de Luciano — buscar "perez" tiene que encontrar "Pérez", y ese caso es mucho más
+Decisión consciente del dueño — buscar "perez" tiene que encontrar "Pérez", y ese caso es mucho más
 frecuente que dos apellidos que sólo difieren en la eñe. Se acepta que la importación los unifique.
 
 **Para buscar hay que normalizar lo buscado igual que lo guardado.** Por eso `fn_normalizar_nombre`

@@ -75,7 +75,7 @@ a la base sin volver a tipearlos.
 - **RF-023** — Un presupuesto registrado **no se borra**: es un registro histórico. Si está mal, se
   corrige y conserva su número (RF-016); si no se concretó, se marca (RF-015). Con esto la garantía de
   RF-020 se sostiene sola: un número deja de estar en uso sólo si su fila desaparece, y su fila no
-  desaparece. *(Enmienda H5, confirmada por Luciano: "no debería por qué borrar los presupuestos, son
+  desaparece. *(Enmienda H5, confirmada por el dueño: "no debería por qué borrar los presupuestos, son
   un registro histórico". Los conceptos de un presupuesto sí se pueden borrar — corregir una lista es
   parte de RF-016, y la importación los reemplaza por completo.)*
 
@@ -101,7 +101,7 @@ a la base sin volver a tipearlos.
   trabajos que son sólo mano de obra. El vehículo tampoco es exigible. Esa regla la aplica quien
   carga, no el esquema (RF-008, RF-019, principio IV), pero **la base tiene que poder decir cuáles
   están incompletos y qué les falta**, para poder revisarlos. *(Enmienda H7, confirmada por
-  Luciano: "mano de obra y los datos no pueden faltar, lo que a veces no se necesita son
+  El dueño: "mano de obra y los datos no pueden faltar, lo que a veces no se necesita son
   repuestos".)*
 
 ### Cliente y vehículo
@@ -149,7 +149,7 @@ a la base sin volver a tipearlos.
 - **RF-018** — La importación tiene que ser repetible sin duplicar: reimportar el mismo archivo no crea
   presupuestos nuevos. **La importación agrega lo que falta y nunca pisa lo que ya está**: si el número
   ya existe en la base, no se toca, y se informa si el archivo traía algo distinto para que alguien lo
-  mire. *(Decisión de Luciano en H13. Es además exactamente lo que hace la propia herramienta al
+  mire. *(Decisión del dueño en H13. Es además exactamente lo que hace la propia herramienta al
   restaurar un CSV: `const nuevos = r.presupuestos.filter(p => !hay.has(p.numero))`. La regla original
   del plan —actualizar si el `modificado_en` del archivo es posterior— sí es implementable, porque esa
   columna existe; se descarta igual, porque no pisar es lo único que no puede perder en silencio una

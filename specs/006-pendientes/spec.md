@@ -27,7 +27,7 @@ con el principio I.
 ## Requisitos
 
 - **RF-501** — Se puede guardar un presupuesto sin mano de obra y sin repuestos. Queda pendiente.
-- **RF-502** — Un pendiente **no gasta número**. Decisión de Luciano: un pendiente abandonado no
+- **RF-502** — Un pendiente **no gasta número**. Decisión del dueño: un pendiente abandonado no
   puede dejar un hueco en el talonario. El número se pide recién al emitirlo, igual que hoy se
   pide recién al guardar y no al abrir la página (RF-020, RF-103).
 - **RF-503** — Lo mínimo para dejar algo pendiente es **el nombre del cliente**. Sin eso la fila

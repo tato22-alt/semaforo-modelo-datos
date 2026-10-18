@@ -1,7 +1,7 @@
 # Plan 003 — Verificación del presupuesto impreso
 
 **Spec:** `specs/003-verificacion/spec.md` · **Constitución:** v3.0.0
-**Estado:** borrador, esperando confirmación de Luciano antes de tocar el esquema (principio X)
+**Estado:** borrador, esperando confirmación del dueño antes de tocar el esquema (principio X)
 
 ---
 

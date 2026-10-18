@@ -1,7 +1,7 @@
 # Spec 004 — Número de chasis y observaciones
 
-**Estado:** borrador, esperando confirmación de Luciano · **Constitución:** v3.0.0
-**Pedido de Luciano:** *"necesito que en el campo de dirección en el ppto lo cambies y pongas
+**Estado:** borrador, esperando confirmación del dueño · **Constitución:** v3.0.0
+**Pedido del dueño:** *"necesito que en el campo de dirección en el ppto lo cambies y pongas
 n° de chasis, y abajo un renglón que puede estar vacío de observaciones"*
 
 ---
