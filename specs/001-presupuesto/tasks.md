@@ -40,7 +40,7 @@ está verificada.
 
 ## Bloque D — Importación
 
-> **EN PAUSA — ver H16.** Luciano confirmó que no hay registro histórico: el taller está pasando de
+> **EN PAUSA — ver H16.** El dueño confirmó que no hay registro histórico: el taller está pasando de
 > papel a digital, y el `localStorage` no tiene presupuestos que traer. Estas cinco tareas migran
 > cero filas. Se conservan sin empezar, porque vuelven a tener sentido si se cargan presupuestos en
 > el navegador antes de que la página se conecte a la base. **No bloquean al feature 002.**

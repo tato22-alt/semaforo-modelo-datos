@@ -2,7 +2,7 @@
 
 ## No subir nada sin autorización
 
-**No hacer `git push` ni abrir Pull Requests sin que Luciano lo autorice
+**No hacer `git push` ni abrir Pull Requests sin que el dueño lo autorice
 explícitamente en ese momento.** Trabajar en local, mostrar el cambio, y esperar
 el visto bueno. Una autorización sirve para ese push, no para los siguientes.
 

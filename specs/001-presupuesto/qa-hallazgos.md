@@ -40,7 +40,7 @@ consulta.
 | Local, base vacía | PostgreSQL 16, las trece migraciones desde cero, roles de Supabase replicados | **49 PASA · 0 FALLA** |
 | Local, base poblada | Migraciones 1–9 + datos equivalentes a los reales, después las cuatro enmiendas | **49 PASA · 0 FALLA** |
 | Local, doble pasada | Las trece migraciones aplicadas dos veces seguidas | **49 PASA · 0 FALLA** |
-| **Supabase** | Proyecto real `osslhkvdclrbukjqwpnt`, las trece migraciones aplicadas | **49 PASA · 0 FALLA** |
+| **Supabase** | Proyecto real, las trece migraciones aplicadas | **49 PASA · 0 FALLA** |
 
 Las cuatro corridas coinciden verificación por verificación. Nada quedó inferido: el 49/49 sobre
 la base real está medido.
@@ -206,7 +206,7 @@ algunos no tienen fecha y desaparecen del conteo sin avisar.
 
 **Toca.** Pregunta 7, RF-008.
 
-**Resuelto, y más grande de lo que parecía.** Luciano: *"mano de obra y los datos no pueden
+**Resuelto, y más grande de lo que parecía.** El dueño: *"mano de obra y los datos no pueden
 faltar, lo que a veces no se necesita son repuestos"*. Eso es una regla de carga, no una
 restricción del esquema: hacerla `NOT NULL` dejaría afuera el histórico incompleto (RF-019) y
 empujaría a que alguien escriba `xx` con tal de guardar (principio IV). Quedó así:
@@ -311,7 +311,7 @@ corrido hoy: sólo importa cuando se construya la importación, en el bloque D.
 2. **Una sola normalización.** La importación coteja por `nombre_norm`. Más simple, y unifica
    bien los `Pérez`/`Perez`. Acepta que algún `Peña`/`Pena` se fusione mal, sin vuelta atrás.
 
-**Decidido por Luciano: "si peña y pena es lo mismo".** Se coteja con `nombre_norm`, la misma
+**Decidido por el dueño: "si peña y pena es lo mismo".** Se coteja con `nombre_norm`, la misma
 normalización sin acentos que usa la búsqueda. `Peña` y `Pena` se unifican, igual que `Pérez` y
 `Perez`. No hace falta una segunda función de cotejo. Se acepta que dos apellidos distintos que
 sólo difieren en la eñe queden fusionados; a cambio, los mismos clientes escritos de dos maneras
@@ -321,7 +321,7 @@ sólo difieren en la eñe queden fusionados; a cambio, los mismos clientes escri
 
 ### H12 — Hay dos versiones de la herramienta dando vueltas · CORREGIDO
 
-**Cómo se registró primero, y por qué estaba mal.** Con el HTML que Luciano subió, di por hecho que
+**Cómo se registró primero, y por qué estaba mal.** Con el HTML que el dueño subió, di por hecho que
 esa era la herramienta publicada y anoté que la spec describía una versión inexistente. Era al revés.
 El CSV real y el código publicado (`tato22-alt/semaforo-presupuesto` @ `178fb1d`, el mismo commit que
 la spec cita) confirman que **la spec es exacta**:
@@ -335,7 +335,7 @@ la spec cita) confirman que **la spec es exacta**:
 | Todo presupuesto deja al menos una fila | `if(!filas.length) filas.push([...izq,'','',...der])` | sí |
 | Máximo histórico que nunca retrocede | `maxEmitido`, y al restaurar sube con `Math.max` | sí |
 
-**El hallazgo real.** El archivo que Luciano subió **no es el publicado**: arranca en 16001, exporta
+**El hallazgo real.** El archivo que el dueño subió **no es el publicado**: arranca en 16001, exporta
 12 columnas, no normaliza la patente, guarda `{guardados, proximo}` y no tiene ninguna de las
 protecciones de numeración. Es una variante más simple.
 
@@ -354,7 +354,7 @@ tratar como autoritativo un archivo suelto, y no al revés.
 el CSV no traía `modificado_en`. **Sí lo trae** — la columna existe en el publicado y en el CSV real.
 La conclusión salió de la variante equivocada.
 
-**Qué queda.** Luciano eligió que la importación **agregue lo que falta y nunca pise lo que ya está**.
+**Qué queda.** El dueño eligió que la importación **agregue lo que falta y nunca pise lo que ya está**.
 La decisión se sostiene por sus propios méritos, aunque el motivo que le di era falso:
 
 - Ninguna actualización automática puede distinguir una corrección deliberada hecha en la base de un
@@ -415,7 +415,7 @@ detalle y sin importe. Como control, la suma de los renglones restantes tiene qu
 
 ### H16 — No hay histórico que importar: el bloque D se queda sin motivo
 
-**Qué pasa.** Luciano: *"No tenemos registro histórico, estamos migrando de presupuesto físico a
+**Qué pasa.** El dueño: *"No tenemos registro histórico, estamos migrando de presupuesto físico a
 digital."* El bloque D entero (T011–T015) existe para traer a la base los presupuestos ya cargados
 en el navegador. Si no hay ninguno, no hay nada que traer.
 
@@ -451,7 +451,7 @@ Quien asigne números tiene que arrancar en **16000** (RF-001, y `PRIMER_NUMERO`
 no fallar ni empezar en 1. Y hay que confirmar en qué número quedó el talonario de papel: si ya pasó
 el 16000, la serie digital tiene que arrancar más arriba.
 
-**Sin decidir.** Necesita el visto bueno de Luciano antes de tocar `tasks.md`. Mientras tanto, las
+**Sin decidir.** Necesita el visto bueno del dueño antes de tocar `tasks.md`. Mientras tanto, las
 cinco tareas quedan escritas y sin empezar.
 
 ---
