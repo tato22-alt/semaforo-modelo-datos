@@ -8,7 +8,7 @@ clientes, vehículos y trabajos. **PostgreSQL sobre Supabase**, en uso real.
 | | |
 |---|---|
 | Migraciones | 19, aplicadas en producción |
-| Esquema | 4 tablas, 2 vistas, 6 funciones, 0 triggers |
+| Esquema | 4 tablas, 2 vistas, 5 funciones, 0 triggers |
 | Verificación | 58 comprobaciones automáticas en una sola consulta, 58/58 en verde |
 | Acceso | RLS activa y forzada; sin sesión no se lee ni se escribe nada |
 

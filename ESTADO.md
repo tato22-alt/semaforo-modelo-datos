@@ -11,7 +11,7 @@ el QA, que es la fuente de verdad.
 
 ## Qué hay funcionando
 
-Cuatro tablas, dos vistas, seis funciones, cero triggers. La base reparte los números desde el 16000
+Cuatro tablas, dos vistas, cinco funciones, cero triggers. La base reparte los números desde el 16000
 y no puede repetir ninguno. RLS puesto: el rol anónimo no lee, no escribe y no pide números.
 
 **Verificado:** 58 comprobaciones en una sola consulta, sobre Supabase y sobre PostgreSQL local, en
