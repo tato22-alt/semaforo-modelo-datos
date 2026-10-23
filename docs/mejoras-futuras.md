@@ -8,7 +8,7 @@ no tener ninguna: alguien la lee y construye lo que se decidió no construir.
 
 ## Lo que hay hoy
 
-Cuatro tablas, dos vistas, seis funciones, **cero triggers**.
+Cuatro tablas, dos vistas, cinco funciones, **cero triggers**.
 
 | | |
 |---|---|
